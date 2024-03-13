@@ -159,3 +159,22 @@ function sumArray(parameter) {
   }
   return resultSum;
 }
+
+btnResult.onclick = function () {
+    const expression = display.value;
+    if (!isValidExpression(expression)) {
+        displayError("Expressão inválida!");
+    } else {
+        calculateResult();
+    }
+};
+
+function isValidExpression(expression) {
+    const lastCharacter = expression.slice(-1);
+    return !verifyOperator(lastCharacter);
+}
+
+function displayError(errorMessage) {
+    const errorElement = document.getElementById('error-message');
+    errorElement.textContent = errorMessage;
+}
